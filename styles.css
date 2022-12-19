@@ -1,1 +1,108 @@
 /* styles. css */
+
+body {
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans';
+}
+
+/* the toggle switch for dark/light mode */
+.toggle {
+    align-self: flex-start;
+}
+
+/* the calculator */
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 512px;
+    padding-bottom: 20px;
+}
+
+/* the display for the calculator */
+.screen {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 80%;
+    height: 130px;
+    background-color: #E7E0CF;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #332D2D;
+}
+
+.screen .calculations {
+    width: 90%;
+    height: 30px;
+    text-align: end;
+}
+
+.screen .result {
+    width: 90%;
+    height: 40px;
+    text-align: end;
+    font-size: 40px;
+}
+
+.calc-buttons {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 80%;
+    height: 300px;
+    column-gap: 15px;
+    row-gap: 10px;
+}
+
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+
+.delete {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+
+
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(255, 227, 207);
+    text-shadow: 0px 0px 8px #602f1d;
+}
+
+.footer {
+    background-color: #E7E0CF;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    font-size: 13px;
+    color: #332D2D;
+}
+
+
+
+
+@media only screen and (max-width: 450px) {
+    .calculator {
+        width: 450px;
+    }
+}
