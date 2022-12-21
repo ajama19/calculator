@@ -9,10 +9,62 @@ body {
     font-family: 'Open Sans';
 }
 
-/* the toggle switch for dark/light mode */
+/* styling for the toggle switch for dark/light mode */
 .toggle {
     align-self: flex-start;
+    padding: 4px 0px 0px 4px;
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 29px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: #574E4E;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    left: 4px;
+    bottom: 4px;
+    height: 22px;
+    width: 22px;
+    background-color: #E7E0CF;
+    border-radius: 50%;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #E7E0CF;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+    background-color: #574E4E;
+}
+
 
 /* the calculator */
 .calculator {
@@ -23,10 +75,10 @@ body {
     padding-bottom: 20px;
 }
 
-/* the display for the calculator */
+/* styling for calculator display */
 .screen {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 2px;
+    margin-bottom: 15px;
     width: 80%;
     height: 130px;
     background-color: #E7E0CF;
@@ -51,12 +103,14 @@ body {
     font-size: 40px;
 }
 
+
+/* styling for calculator buttons */
 .calc-buttons {
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     width: 80%;
-    height: 300px;
+    height: 290px;
     column-gap: 15px;
     row-gap: 10px;
 }
@@ -75,10 +129,27 @@ body {
     grid-row-end: 2;
 }
 
+button {
+    font-size: 25px;
+    background-color: #E7E0CF;
+    color: #332D2D;
+    border-style: none;
+    border-radius: 15px;
+    padding: 8px 0px;
+}
+
+button:hover {
+    box-shadow: 0 1px 3px #4a3d24;
+    transform: scale(1.05);
+}
+
+.sqrt, .power, .delete, .pi, .percent, .int, .divd, .mult, .sub, .add, .equals {
+    background-color: #574E4E;
+    color: #E7E0CF;
+}
 
 
-
-
+/* styling for footer */
 a {
     text-decoration: none;
 }
@@ -100,9 +171,15 @@ a:hover {
 
 
 
-
+/* styling for smaller screens */
 @media only screen and (max-width: 450px) {
     .calculator {
         width: 450px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .calculator {
+        width: 400px;
     }
 }
