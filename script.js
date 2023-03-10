@@ -27,9 +27,7 @@ slider.addEventListener('click', () => {
                 item.style.backgroundColor = '#574E4E';
                 item.style.color = '#E7E0CF';
             }
-            
         }
-        //console.log(calcMode);
     } else if (calcMode == 'dark') {
         calcMode = 'light';
         background.style.backgroundColor = '#FFFEFC';
@@ -44,26 +42,18 @@ slider.addEventListener('click', () => {
             || item.className == 'add' || item.className == 'equals') {
                 item.style.backgroundColor = '#574E4E';
                 item.style.color = '#fffaed';
-
             } else {
                 item.style.backgroundColor = '#E7E0CF';
                 item.style.color = '#574E4E';
             } 
         }
-        //console.log(calcMode);
-    }
-    
+    } 
 }, false);
 
 
 
-//function for calculator operation
-function operate() {
-    return;
-}
-
-
 //math functions
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -72,30 +62,33 @@ function subtract(num1, num2) {
     return num1 - num2;
 }
 
-
-function multiply(num1, num2) {
+function multiply(num1, num2) { 
     return num1 * num2;
 }
 
-
 function divide(num1, num2) {
-    return num1/num2;
+    if (num2 === 0) {
+        return "ERROR: Cannot divide by 0";
+    } else {
+        return num1 / num2;
+    }
 }
 
 
 
-/* EXTRA FUNCTIONS TO ADD LATER
+//operate function
 
-function exponent(num1, num2) {
-    return Math.pow(num1, num2);
+function operate(operator, num1, num2) {
+    if (operator === '+') {
+        return add(num1, num2);
+
+    } else if (operator === '-') {
+        return subtract(num1, num2);
+
+    } else if (operator === '*') {
+        return multiply(num1, num2);
+
+    } else if (operator === '/') {
+        return divide(num1, num2);
+    }
 }
-
-
-function squareRoot(num) {
-    return Math.sqrt(num);
-}
-
-function percent(num) {
-    return num/100;
-}
-*/
