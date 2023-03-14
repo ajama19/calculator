@@ -180,10 +180,18 @@ a:hover {
     .calculator {
         width: 450px;
     }
+    
+    .screen {
+        margin-top: 15px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
     .calculator {
         width: 400px;
+    }
+
+    .screen {
+        margin-top: 15px;
     }
 }

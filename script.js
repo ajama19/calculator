@@ -89,6 +89,20 @@ function operate(operator, num1, num2) {
         return multiply(num1, num2);
 
     } else if (operator === '/') {
-        return divide(num1, num2);
+        if (num2 === 0) {
+            return "ERROR: DIV BY 0"
+        } else {
+            return divide(num1, num2);
+        }
+
+    } else if (num2 === undefined) { //if ur missing a function parameter its set to undefined
+        console.log('there is no second number');
     }
 }
+
+
+
+// display buttons
+
+let upperDisplay = document.querySelector(".calculations");
+let lowerDisplay = document.querySelector(".result");
