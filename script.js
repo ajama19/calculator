@@ -52,6 +52,10 @@ slider.addEventListener('click', () => {
 
 
 
+//functions for calculator operation
+let upperDisplay = document.querySelector(".calculations");
+let lowerDisplay = document.querySelector(".result");
+
 //math functions
 
 function add(num1, num2) {
@@ -89,11 +93,7 @@ function operate(operator, num1, num2) {
         return multiply(num1, num2);
 
     } else if (operator === '/') {
-        if (num2 === 0) {
-            return "ERROR: DIV BY 0"
-        } else {
-            return divide(num1, num2);
-        }
+        return divide(num1, num2);
 
     } else if (num2 === undefined) { //if ur missing a function parameter its set to undefined
         console.log('there is no second number');
@@ -101,8 +101,14 @@ function operate(operator, num1, num2) {
 }
 
 
-
 // display buttons
+numberButtons = document.querySelectorAll(".num");
+operatorButtons = document.querySelectorAll(".operation")
+clearButton = document.querySelector(".clear");
+deleteButton = document.querySelector(".delete");
+sqrtButton = document.querySelector(".sqrt");
+exponentButton = document.querySelector(".power");
+percentButton = document.querySelector(".percent");
+integerButton = document.querySelector(".int");
+equalsButton = document.querySelector(".equals");
 
-let upperDisplay = document.querySelector(".calculations");
-let lowerDisplay = document.querySelector(".result");
