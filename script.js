@@ -111,4 +111,39 @@ exponentButton = document.querySelector(".power");
 percentButton = document.querySelector(".percent");
 integerButton = document.querySelector(".int");
 equalsButton = document.querySelector(".equals");
+piButton = document.querySelector(".pi");
 
+for (let i = 0; i < numberButtons.length; i++) {
+    numberButtons[i].addEventListener('click', () => {
+        lowerDisplay.textContent += numberButtons[i].innerText;
+    });
+}
+
+
+for (let i = 0; i < operatorButtons.length; i++) {
+    operatorButtons[i].addEventListener('click', () => {
+        if (lowerDisplay.innerText === "") {
+            lowerDisplay.textContent += "";
+        } else if (lowerDisplay.textContent.endsWith('+') || lowerDisplay.textContent.endsWith('-') || lowerDisplay.textContent.endsWith('x') || lowerDisplay.textContent.endsWith('÷')) {
+            lowerDisplay.textContent += "";
+        } else {
+            lowerDisplay.textContent += operatorButtons[i].innerText;
+        }
+    });
+}
+
+clearButton.addEventListener('click', () => {
+    lowerDisplay.textContent = "";
+    upperDisplay.textContent = "";
+});
+
+
+//for the pi button remember to have the evaluate function convert it to a numeric value
+piButton.addEventListener('click', () => {
+    if (lowerDisplay.textContent.endsWith('π')) {
+        lowerDisplay.textContent += "";
+    } else {
+        lowerDisplay.textContent += piButton.innerText;
+    }
+    
+});
