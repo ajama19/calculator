@@ -102,24 +102,25 @@ function operate(operator, num1, num2) {
 
 
 // display buttons
-numberButtons = document.querySelectorAll(".num");
-operatorButtons = document.querySelectorAll(".operation")
-clearButton = document.querySelector(".clear");
-deleteButton = document.querySelector(".delete");
-sqrtButton = document.querySelector(".sqrt");
-exponentButton = document.querySelector(".power");
-percentButton = document.querySelector(".percent");
-integerButton = document.querySelector(".int");
-equalsButton = document.querySelector(".equals");
-piButton = document.querySelector(".pi");
+let numberButtons = document.querySelectorAll(".num");
+let operatorButtons = document.querySelectorAll(".operation")
+let clearButton = document.querySelector(".clear");
+let deleteButton = document.querySelector(".delete");
+let sqrtButton = document.querySelector(".sqrt");
+let exponentButton = document.querySelector(".power");
+let percentButton = document.querySelector(".percent");
+let integerButton = document.querySelector(".int");
+let equalsButton = document.querySelector(".equals");
+let piButton = document.querySelector(".pi");
 
+// number buttons
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         lowerDisplay.textContent += numberButtons[i].innerText;
     });
 }
 
-
+// basic operator buttons
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         if (lowerDisplay.innerText === "") {
@@ -127,14 +128,49 @@ for (let i = 0; i < operatorButtons.length; i++) {
         } else if (lowerDisplay.textContent.endsWith('+') || lowerDisplay.textContent.endsWith('-') || lowerDisplay.textContent.endsWith('x') || lowerDisplay.textContent.endsWith('÷')) {
             lowerDisplay.textContent += "";
         } else {
-            lowerDisplay.textContent += operatorButtons[i].innerText;
+            lowerDisplay.textContent += " " + operatorButtons[i].innerText + " ";
         }
     });
 }
 
+// clear button
 clearButton.addEventListener('click', () => {
     lowerDisplay.textContent = "";
     upperDisplay.textContent = "";
+});
+
+// delete button
+deleteButton.addEventListener('click', () => {
+    lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1);
+});
+
+// square root button
+sqrtButton.addEventListener('click', () => {
+    // should call evaluate function that applies a square root to an operand
+});
+
+// exponent button
+exponentButton.addEventListener('click', () => {
+    if (lowerDisplay.textContent === "") {
+        lowerDisplay.textContent += "";
+    } else {
+        lowerDisplay.textContent += " " + exponentButton.innerText + " ";
+    }
+});
+
+// percent button
+percentButton.addEventListener('click', () => {
+    //should call evaluate function that turns the operand into a percent
+});
+
+// positive/negative number button
+integerButton.addEventListener('click', () => {
+    //implement after 
+});
+
+// equals button
+equalsButton.addEventListener('click', () => {
+    //implement later
 });
 
 
@@ -144,6 +180,32 @@ piButton.addEventListener('click', () => {
         lowerDisplay.textContent += "";
     } else {
         lowerDisplay.textContent += piButton.innerText;
-    }
-    
+    } 
 });
+
+
+// variables for running the calculator
+//let firstOperand = 0;
+//let secondOperand = 0;
+//let operator = "";
+
+// functions that will make the calculator work 
+let allBtns = document.querySelector('.calc-buttons');
+
+//use a class to run the calculator
+class Calculator {
+    constructor(firstOperand, secondOperand, operator) {
+        this.firstOperand = firstOperand;
+        this.secondOperand = secondOperand;
+        this.operator = operator;
+    }
+
+}
+
+//how to start the calculator
+//first you enter in a number
+
+//when you click an operator button then that number becomes the first operand and 
+//is transferred to the upper screen
+
+//then when you click another number button the op
