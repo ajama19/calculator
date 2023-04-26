@@ -52,53 +52,9 @@ slider.addEventListener('click', () => {
 
 
 
-//functions for calculator operation
+//display components
 let upperDisplay = document.querySelector(".calculations");
 let lowerDisplay = document.querySelector(".result");
-
-//math functions
-
-function add(num1, num2) {
-    return num1 + num2;
-}
-
-function subtract(num1, num2) {
-    return num1 - num2;
-}
-
-function multiply(num1, num2) { 
-    return num1 * num2;
-}
-
-function divide(num1, num2) {
-    if (num2 === 0) {
-        return "ERROR: Cannot divide by 0";
-    } else {
-        return num1 / num2;
-    }
-}
-
-
-
-//operate function
-
-function operate(operator, num1, num2) {
-    if (operator === '+') {
-        return add(num1, num2);
-
-    } else if (operator === '-') {
-        return subtract(num1, num2);
-
-    } else if (operator === '*') {
-        return multiply(num1, num2);
-
-    } else if (operator === '/') {
-        return divide(num1, num2);
-
-    } else if (num2 === undefined) { //if ur missing a function parameter its set to undefined
-        console.log('there is no second number');
-    }
-}
 
 
 // display buttons
@@ -113,14 +69,15 @@ let integerButton = document.querySelector(".int");
 let equalsButton = document.querySelector(".equals");
 let piButton = document.querySelector(".pi");
 
-// number buttons
+// number button event listeners
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         lowerDisplay.textContent += numberButtons[i].innerText;
     });
 }
 
-// basic operator buttons
+// operator button event listeners
+// basic operator buttons 
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         if (lowerDisplay.innerText === "") {
@@ -173,7 +130,6 @@ equalsButton.addEventListener('click', () => {
     //implement later
 });
 
-
 //for the pi button remember to have the evaluate function convert it to a numeric value
 piButton.addEventListener('click', () => {
     if (lowerDisplay.textContent.endsWith('π')) {
@@ -184,28 +140,42 @@ piButton.addEventListener('click', () => {
 });
 
 
-// variables for running the calculator
-//let firstOperand = 0;
-//let secondOperand = 0;
-//let operator = "";
 
-// functions that will make the calculator work 
-let allBtns = document.querySelector('.calc-buttons');
+
 
 //use a class to run the calculator
 class Calculator {
-    constructor(firstOperand, secondOperand, operator) {
-        this.firstOperand = firstOperand;
-        this.secondOperand = secondOperand;
-        this.operator = operator;
+    constructor() {
+        this.firstOperand = 0;
+        this.secondOperand = 0;
+        this.operator = "";
     }
 
+    updateDisplay() {
+
+    }
+
+    operate() {
+
+    }
+
+    add() {
+
+    }
+
+    subtract() {
+
+    }
+
+    multiply() {
+
+    }
+
+    divide() {
+
+    }
+
+
+
 }
-
-//how to start the calculator
-//first you enter in a number
-
-//when you click an operator button then that number becomes the first operand and 
-//is transferred to the upper screen
-
-//then when you click another number button the op
+const calc = new Calculator();
