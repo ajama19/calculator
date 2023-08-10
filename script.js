@@ -56,7 +56,6 @@ slider.addEventListener('click', () => {
 let upperDisplay = document.querySelector(".calculations");
 let lowerDisplay = document.querySelector(".result");
 
-
 // display buttons
 let numberButtons = document.querySelectorAll(".num");
 let operatorButtons = document.querySelectorAll(".operation")
@@ -69,10 +68,14 @@ let integerButton = document.querySelector(".int");
 let equalsButton = document.querySelector(".equals");
 let piButton = document.querySelector(".pi");
 
+// variables
+
+
+
 // number button event listeners
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
-        lowerDisplay.textContent += numberButtons[i].innerText;
+        calculator.updateDisplay(numberButtons[i]);
     });
 }
 
@@ -80,102 +83,223 @@ for (let i = 0; i < numberButtons.length; i++) {
 // basic operator buttons 
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
-        if (lowerDisplay.innerText === "") {
-            lowerDisplay.textContent += "";
-        } else if (lowerDisplay.textContent.endsWith('+') || lowerDisplay.textContent.endsWith('-') || lowerDisplay.textContent.endsWith('x') || lowerDisplay.textContent.endsWith('÷')) {
-            lowerDisplay.textContent += "";
-        } else {
-            lowerDisplay.textContent += " " + operatorButtons[i].innerText + " ";
-        }
+        calculator.updateDisplay(operatorButtons[i]);
     });
 }
 
 // clear button
 clearButton.addEventListener('click', () => {
-    lowerDisplay.textContent = "";
-    upperDisplay.textContent = "";
+    //lowerDisplay.textContent = "";
+    //upperDisplay.textContent = "";
+    calculator.updateDisplay(clearButton);
 });
 
 // delete button
 deleteButton.addEventListener('click', () => {
-    lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1);
+    calculator.updateDisplay(deleteButton);
+    //lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1);
 });
 
 // square root button
 sqrtButton.addEventListener('click', () => {
-    // should call evaluate function that applies a square root to an operand
+    calculator.updateDisplay(sqrtButton);
 });
 
 // exponent button
 exponentButton.addEventListener('click', () => {
-    if (lowerDisplay.textContent === "") {
-        lowerDisplay.textContent += "";
-    } else {
-        lowerDisplay.textContent += " " + exponentButton.innerText + " ";
-    }
+    calculator.updateDisplay(exponentButton);
 });
 
 // percent button
 percentButton.addEventListener('click', () => {
     //should call evaluate function that turns the operand into a percent
+    calculator.updateDisplay(percentButton);
 });
 
 // positive/negative number button
 integerButton.addEventListener('click', () => {
     //implement after 
+    calculator.updateDisplay(integerButton);
 });
 
 // equals button
 equalsButton.addEventListener('click', () => {
     //implement later
+    calculator.equals(equalsButton);
 });
 
 //for the pi button remember to have the evaluate function convert it to a numeric value
 piButton.addEventListener('click', () => {
-    if (lowerDisplay.textContent.endsWith('π')) {
-        lowerDisplay.textContent += "";
-    } else {
-        lowerDisplay.textContent += piButton.innerText;
-    } 
+    calculator.updateDisplay(piButton);
 });
-
-
 
 
 
 //use a class to run the calculator
 class Calculator {
     constructor() {
-        this.firstOperand = 0;
-        this.secondOperand = 0;
+        this.firstOperand = "";
+        this.secondOperand = "";
         this.operator = "";
     }
 
-    updateDisplay() {
-
+    checkDisplay(button) {
+        
     }
 
-    operate() {
+    //when you click a button it should update the display
+    //
+    updateDisplay(button) {
+        //NOTE: try making a checkDisplay function. This will check the display for operators
+        //if one is present and you press another then evaluate
 
+        //or have checkDisplay only do a check when an operator is pressed. check to see if there are 3 things 
+        //in the lower display and if there are and an operator is pressed then evaluate
+        this.firstOperand = this.secondOperand;
+        
+        this.checkDisplay(button);
+
+        switch(button.className) {
+            case "sqrt":
+                //first check if there is only one item, then apply square root
+                //if no items dont do anything
+                //if more than one item dont do anything
+                console.log(button.innerText);
+                break;
+
+            case "power":
+                console.log(button.innerText);
+                break;
+
+            case "delete": 
+                lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1);
+                break;
+
+            case "clear":
+                lowerDisplay.textContent = "";
+                upperDisplay.textContent = "";
+                break;
+
+            case "pi":
+                console.log(button.innerText);
+                break;
+
+            case "percent":
+                console.log(button.innerText);
+                break;
+
+            case "int":
+                console.log(button.innerText);
+                break;
+
+            case "divd operation":
+                    lowerDisplay.textContent += ' ÷ ';
+                    break;
+
+            case "seven num":
+                lowerDisplay.textContent += '7';
+                break;
+
+            case "eight num":
+                lowerDisplay.textContent += '8';
+                break;
+
+            case "nine num":
+                lowerDisplay.textContent += '9';
+                break;
+
+            case "mult operation":
+                    lowerDisplay.textContent += ' x ';
+                    break;
+
+            case "four num":
+                lowerDisplay.textContent += '4';
+                break;
+    
+            case "five num":
+                lowerDisplay.textContent += '5';
+                break;
+    
+            case "six num":
+                lowerDisplay.textContent += '6';
+                break;
+
+            case "sub operation":
+                    lowerDisplay.textContent += ' - ';
+                    break;
+
+            case "one num":
+                lowerDisplay.textContent += '1';
+                break;
+    
+            case "two num":
+                lowerDisplay.textContent += '2';
+                break;
+    
+            case "three num":
+                lowerDisplay.textContent += '3';
+                break;
+
+            case "add operation":
+
+                lowerDisplay.textContent += ' + ';
+                break;
+
+            case "zero num":
+                lowerDisplay.textContent += '0';
+                break;
+
+            case "dot operation":
+                //if the item before is a dot then dont add it
+                lowerDisplay.textContent += '.';
+                break;
+        }
     }
 
-    add() {
-
+    operate(num1, num2, operator) {
+        switch(operator) {
+            case '*':
+                multiply(num1, num2);
+        }
     }
 
-    subtract() {
-
+    add(num1, num2) {
+        return num1+num2;
     }
 
-    multiply() {
-
+    subtract(num1, num2) {
+        return num1-num2;
     }
 
-    divide() {
-
+    multiply(num1, num2) {
+        return num1*num2;
     }
 
+    divide(num1, num2) {
+        return num1/num2;
+    }
 
+    evaluate() {
+        //called when the equals button is pressed or when the display has 3 items
+        console.log("evaluated");
+    }
 
 }
-const calc = new Calculator();
+
+const calculator = new Calculator();
+
+
+//let length = this.checkDisplayLength();
+        //if (length === 3 && (button !== clearButton && button !== deleteButton)) {
+            //this.evaluate();
+            //return "evaluated";
+        //}
+
+
+//checkDisplayLength() {
+    //let arr = lowerDisplay.textContent.split(" ");
+    //if (arr[arr.length-1] === "") {
+        //arr.pop();
+   // }
+    //return arr.length;
+//}
